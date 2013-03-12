@@ -1,4 +1,6 @@
 *.class
+target
+.settings
 
 # Eclipse #
 .project

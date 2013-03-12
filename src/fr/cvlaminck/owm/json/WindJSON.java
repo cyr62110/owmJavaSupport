@@ -14,13 +14,28 @@
  * limitations under the License.
  */
 
-package fr.cvlaminck.owm.model;
+package fr.cvlaminck.owm.json;
 
-public class Snow extends Preciptation {
+import org.json.JSONException;
+import org.json.JSONObject;
 
-	@Override
-	public String getType() {
-		return "snow";
+import fr.cvlaminck.owm.model.Wind;
+
+public class WindJSON 
+{
+	public final static String WIND_SPEED = "speed";
+	public final static String WIND_DEGREE = "deg";
+	public final static String WIND_GUST = "gust";
+	
+	public static Wind windFromWeatherJSON(JSONObject json) throws JSONException
+	{
+		Wind wind = new Wind();
+		
+		wind.setSpeed(json.getDouble(WIND_SPEED));
+		wind.setDegree(json.getDouble(WIND_DEGREE));
+		if(json.has(WIND_GUST))
+			wind.setGust(json.getDouble(WIND_GUST));
+		
+		return wind;
 	}
-
 }
