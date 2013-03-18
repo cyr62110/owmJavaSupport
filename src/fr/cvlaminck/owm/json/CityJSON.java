@@ -29,6 +29,7 @@ public class CityJSON
 	public final static String CITY_COUNTRY = "country";
 	public final static String CITY_POPULATION = "pop";
 	public final static String CITY_COORD="coord";
+	public final static String CITY_DISTANCE = "distance";
 	public final static String WEATHER_SYS = "sys";
 	public final static String COORD_LATITUDE = "lat";
 	public final static String COORD_LONGITUDE = "lon";
@@ -40,10 +41,12 @@ public class CityJSON
 		city.setId(json.getInt(CITY_ID));
 		city.setName(json.getString(CITY_NAME));
 		city.setCoord(coordFromJSON(json.getJSONObject(CITY_COORD)));
+		if(json.has(CITY_DISTANCE))
+			city.setDistance(json.getDouble(CITY_DISTANCE));
 		//This part is optional and may not be always present
-		JSONObject sys = json.getJSONObject(WEATHER_SYS);
-		if(sys != null)
+		if(json.has(WEATHER_SYS))
 		{
+			JSONObject sys = json.getJSONObject(WEATHER_SYS);
 			if(sys.has(CITY_COUNTRY))
 				city.setCountry(sys.getString(CITY_COUNTRY));
 			if(sys.has(CITY_POPULATION))

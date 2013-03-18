@@ -19,6 +19,7 @@ package fr.cvlaminck.owm.model;
 public class City {
 	private int m_id;
 	private String m_name = null;
+	private double m_distance = 0.0; //optional, distance beetween provided coord and city coord
 	private Coord m_coord = null;
 	private String m_country = null;
 	private int m_population = 0;
@@ -43,6 +44,14 @@ public class City {
 		this.m_name = name;
 	}
 
+	public void setDistance(double distance) {
+		this.m_distance = distance;
+	}
+	
+	public double getDistance() {
+		return this.m_distance;
+	}
+	
 	public Coord getCoord() {
 		return m_coord;
 	}

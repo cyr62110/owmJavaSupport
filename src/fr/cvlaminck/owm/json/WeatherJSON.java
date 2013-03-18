@@ -34,10 +34,8 @@ public class WeatherJSON
 	public final static String WEATHER_CONDITIONS = "weather";
 	//TODO: Precipiations are not included in this version
 	
-	public Weather weatherFromWeatherJSON(String jsonString) throws JSONException
-	{
-		JSONObject json = new JSONObject(jsonString);
-		
+	public static Weather weatherFromWeatherJSON(JSONObject json) throws JSONException
+	{	
 		Weather weather = new Weather();
 		
 		weather.setCity(CityJSON.cityFromWeatherJSON(json));
